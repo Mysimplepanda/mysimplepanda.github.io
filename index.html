@@ -1,105 +1,25 @@
-<!doctype html>
-<html>
-  <head>
-    <!-- Page setup -->
-    <meta charset="utf-8">
-    <title>Joe Fan's Coding Website</title>
-    <meta name="description" content="A brief description of your site for search engines">
-    <meta name="author" content="Information about the author here">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
-    <link rel="icon" type="image/png" href="favicon.png">
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>進制轉換器</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+<script src="script.js"></script>
+</head>
+<body>
+  <h2>進制轉換器</h2>
+  <label for="number">數字:</label>
+  <input type="text" id="number" name="number">
   
-    <!-- Stylesheets -->
-    <!-- Reset default styles and add support for google fonts -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet" type="text/css" />
-    <link href="http://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css" />
-   
-    <!-- Custom styles -->
-    <link href="style.css" rel="stylesheet" type="text/css" />
-
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>    
-
-    <!-- Want to add Bootstrap? -->
-    <!-- Visit: https://getbootstrap.com/docs/4.3/getting-started/introduction/ -->
-    
-  </head>
+  <label for="base">基數:</label>
+  <select id="base" name="base">
+    <option value="2">十進制轉二進制</option>
+    <option value="10">二進制轉十進制</option>
+  </select>
   
-  <body>
-
-    <header id="header">
-      <img src="logo.jpg">
-      <h1>꒻ꄲꏂꊰꋬꋊ'ꇙ ꉔꄲ꒯꒐ꋊꍌ ꅐꏂꃳꇙ꒐꓄ꏂ</h1>
-      
-      <!-- Menu link fragment #id should match a div id. Example: <a href="#home"> links to <div id="home"></div>  -->
-      <ul class="main-menu">
-        <li><a href="#home">主頁</a></li>
-        <li><a href="#about">介紹</a></li>
-        <li><a href="#n1">nothingI</a></li>
-        <li><a href="#n2">nothingII</a></li>
-        <li><a href="#n3">nothingIII</a></li>
-        <li><a href="#n4">nothingIV</a></li>        
-      </ul>                 
-    </header>
-   
-    <div id="container">
-      <div class="inner">
-        <div id="content"> 
-          
-          <div id="home" class="content-region hide">
-            <h2>Home</h2>
-            <p>
-              這是一個不知道為何生出來的網站，當你點進來時，你會很後悔              
-            </p>
-          </div>
-          
-          <div id="about" class="content-region hide">
-            <h2>About</h2>
-            <p>
-              <li>Facebook: There isn't anything in my FB</li>
-              <li>Address: Hahahaahaha</li>
-              <li>Phone: Don't disturb me!</li>
-            </p>
-          </div>
-          
-          <div id="n1" class="content-region hide">
-            <h2>There is nothing here <3</h2>
-            <p>
-              xxxxxx
-            </p>
-          </div>
-
-          <div id="n2" class="content-region hide">
-            <h2>There is nothing here <3</h2>
-            <p>
-              xxxxxx
-            </p>
-          </div>
-
-          <div id="n3" class="content-region hide">
-            <h2>There is nothing here <3</h2>
-            <p>
-              xxxxxx
-            </p>
-          </div>
-         
-          <div id="n4" class="content-region hide">
-            <h2>There is nothing here <3</h2>
-            <p>
-              xxxxxx
-            </p>
-          </div>
-          
-        </div>
-      </div>
-    </div>
-
-    <footer>  
-      Footer region
-    </footer>
-    
-    <!-- Load additional JS scripts here -->
-    <script type="text/javascript" src="script.js"></script>
-    
-  </body>
+  <button onclick="convert()">轉換</button>
+  
+  <h3>結果:</h3>
+  <pre id="result"></pre>
+</body>
 </html>

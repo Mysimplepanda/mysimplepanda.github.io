@@ -1,29 +1,41 @@
-// Wait for the document to load before running the script 
-(function ($) {
-  
-  // We use some Javascript and the URL #fragment to hide/show different parts of the page
-  // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#Linking_to_an_element_on_the_same_page
-  $(window).on('load hashchange', function(){
-    
-    // First hide all content regions, then show the content-region specified in the URL hash 
-    // (or if no hash URL is found, default to first menu item)
-    $('.content-region').hide();
-    
-    // Remove any active classes on the main-menu
-    $('.main-menu a').removeClass('active');
-    var region = location.hash.toString() || $('.main-menu a:first').attr('href');
-    
-    // Now show the region specified in the URL hash
-    $(region).show();
-    
-    // Highlight the menu link associated with this region by adding the .active CSS class
-    $('.main-menu a[href="'+ region +'"]').addClass('active'); 
+function d2_to_10(binary) {
+  let decimal = parseInt(binary, 2);
+  let binaryStr = binary.toString();
+  let steps = '';
 
-    // Alternate method: Use AJAX to load the contents of an external file into a div based on URL fragment
-    // This will extract the region name from URL hash, and then load [region].html into the main #content div
-    // var region = location.hash.toString() || '#first';
-    // $('#content').load(region.slice(1) + '.html')
-    
-  });
+  for (let i = binaryStr.length - 1; i >= 0; i--) {
+    steps += `${binaryStr[i]} * 2^${binaryStr.length - i - 1}`;
+    if (i > 0) steps += ' + ';
+  }
   
-})(jQuery);
+  return `${steps} = ${decimal}`;
+}
+
+function d10_to_2(decimal) {
+  let binary = (decimal >>> 0).toString(2);
+  let steps = '';
+  let i = 0;
+
+  while (decimal > 0) {
+    steps += `Step ${++i}: ${decimal} / 2 = ${Math.floor(decimal / 2)} ... Remainder: ${decimal % 2}\n`;
+    decimal = Math.floor(decimal / 2);
+  }
+
+  return `${steps}Binary: ${binary}`;
+}
+
+function convert() {
+  let number = document.getElementById('number').value.trim();
+  let base = document.getElementById('base').value;
+  let result = '';
+
+  if (base == '2' && number !== '') {
+    result = d10_to_2(parseInt(number, 10));
+  } else if (base == '10' && /^[01]+$/.test(number)) {
+    result = d2_to_10(number);
+  } else {
+    result = '請輸入有效的數字。';
+  }
+  
+  document.getElementById('result').innerText = result;
+}
