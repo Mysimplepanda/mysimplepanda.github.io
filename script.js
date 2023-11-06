@@ -17,7 +17,7 @@ function d10_to_2(decimal) {
   let i = 0;
 
   while (decimal > 0) {
-    steps += `Step ${++i}: ${decimal} / 2 = ${Math.floor(decimal / 2)} ... Remainder: ${decimal % 2}\n`;
+    steps += `Step ${++i}: ${decimal} / 2 = ${Math.floor(decimal / 2)} ...  ${decimal % 2}\n`;
     decimal = Math.floor(decimal / 2);
   }
 
